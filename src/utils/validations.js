@@ -5,7 +5,7 @@
  * @returns {string} - The first name extracted from the full name, or the name itself if no blank space is found.
  */
 function firstName(fullName) {
-  const blankSpace = fullName.indexOf(' ');
+  const blankSpace = fullName.lastIndexOf(' ');
 
   if (blankSpace === -1) return fullName;
   else return fullName.slice(0, blankSpace);
