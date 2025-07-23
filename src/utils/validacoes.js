@@ -5,10 +5,8 @@
  * @returns {string} - O primeiro nome extraído do nome completo ou o próprio nome caso não haja espaços.
  */
 function primeiroNome(nomeCompleto) {
-  const espacoEmBranco = nomeCompleto.lastIndexOf(" ");
-
-  if (espacoEmBranco === -1) return nomeCompleto;
-  else return nomeCompleto.slice(0, espacoEmBranco);
+  const nomes = nomeCompleto.trim().split(" ");
+  return nomes[0];
 }
 
 /**
@@ -29,8 +27,7 @@ function verificarDisponibilidadeEstoque(tipoProduto, quantidade) {
   };
 
   const estoqueDisponivel = estoque[tipoProduto];
-  if (estoqueDisponivel === 0) return false;
-  else return true;
+  return estoqueDisponivel >= quantidade;
 }
 
 /**
@@ -50,7 +47,7 @@ function verificarDisponibilidadeEstoque(tipoProduto, quantidade) {
 function calcularPrecoTotal(produtos) {
   let total = 0;
   for (let i = 0; i < produtos.length; i++) {
-    total = produtos[i].price;
+    total += produtos[i].preco * produtos[i].quantidade;
   }
   return total;
 }
